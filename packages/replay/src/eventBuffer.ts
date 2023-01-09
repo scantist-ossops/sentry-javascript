@@ -4,7 +4,7 @@
 import { captureException } from '@sentry/core';
 import { logger } from '@sentry/utils';
 
-import type { EventBuffer, RecordingEvent, WorkerAddEventResponse,WorkerRequest, WorkerResponse } from './types';
+import type { EventBuffer, RecordingEvent, WorkerAddEventResponse, WorkerRequest, WorkerResponse } from './types';
 import workerString from './worker/worker.js';
 
 interface CreateEventBufferParams {
@@ -60,7 +60,7 @@ class EventBufferArray implements EventBuffer {
     }
 
     this._events.push(event);
-    return true
+    return true;
   }
 
   public finish(): Promise<string> {
@@ -182,7 +182,7 @@ export class EventBufferCompressionWorker implements EventBuffer {
    */
   private async _sendEventToWorker(event: RecordingEvent): Promise<WorkerAddEventResponse> {
     const promise = this._postMessage({
-      id: this._getAndIncrementId(), 
+      id: this._getAndIncrementId(),
       method: 'addEvent',
       args: [event],
     });

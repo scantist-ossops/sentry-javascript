@@ -230,7 +230,7 @@ export class EventBufferCompressionWorker implements EventBuffer {
     // XXX: See note in `get length()`
     this._eventBufferItemLength = 0;
 
-    await promise
+    await promise;
 
     this._pendingEvents = [];
     return promise as Promise<Uint8Array>;

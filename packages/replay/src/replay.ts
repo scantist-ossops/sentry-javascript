@@ -906,6 +906,7 @@ export class ReplayContainer implements ReplayContainerInterface {
     segmentId: segment_id,
     includeReplayStartTimestamp,
     eventContext,
+    timestamp = new Date().getTime(),
   }: SendReplay): Promise<void | TransportMakeRequestResponse> {
     const recordingData = createRecordingData({
       events,
@@ -915,8 +916,6 @@ export class ReplayContainer implements ReplayContainerInterface {
     });
 
     const { urls, errorIds, traceIds, initialTimestamp } = eventContext;
-
-    const currentTimestamp = new Date().getTime();
 
     const hub = getCurrentHub();
     const client = hub.getClient();
@@ -932,7 +931,7 @@ export class ReplayContainer implements ReplayContainerInterface {
       // @ts-ignore private api
       type: REPLAY_EVENT_NAME,
       ...(includeReplayStartTimestamp ? { replay_start_timestamp: initialTimestamp / 1000 } : {}),
-      timestamp: currentTimestamp / 1000,
+      timestamp,
       error_ids: errorIds,
       trace_ids: traceIds,
       urls,

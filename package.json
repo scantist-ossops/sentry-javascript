@@ -24,6 +24,7 @@
     "lint": "lerna run lint",
     "lint:eslint": "lerna run lint:eslint",
     "postpublish": "lerna run --stream --concurrency 1 postpublish",
+    "replay:repl": "lerna run --scope=@sentry/browser build:bundle && lerna run --scope=@sentry/replay repl",
     "test": "lerna run --ignore @sentry-internal/* test",
     "test:unit": "lerna run --ignore @sentry-internal/* test:unit",
     "test-ci-browser": "lerna run test --ignore \"@sentry/{node,opentelemetry-node,serverless,nextjs,remix,gatsby}\" --ignore @sentry-internal/*",

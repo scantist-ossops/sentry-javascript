@@ -26,6 +26,7 @@
     "lint": "run-s lint:prettier lint:eslint",
     "lint:eslint": "eslint . --format stylish",
     "lint:prettier": "prettier --check \"{src,test,scripts,worker}/**/*.ts\"",
+    "repl": "node scripts/repl.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "bootstrap:demo": "cd demo && yarn",
@@ -45,7 +46,10 @@
     "@babel/core": "^7.17.5",
     "@sentry-internal/replay-worker": "7.39.0",
     "@sentry-internal/rrweb": "1.104.1",
+    "@types/inquirer": "^9.0.3",
+    "inquirer": "^9.1.4",
     "jsdom-worker": "^0.2.1",
+    "playwright": "^1.31.1",
     "tslib": "^1.9.3"
   },
   "dependencies": {

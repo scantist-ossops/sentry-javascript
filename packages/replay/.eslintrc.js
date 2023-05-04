@@ -8,7 +8,10 @@ module.exports = {
   overrides: [
     {
       files: ['src/**/*.ts'],
-      rules: {},
+      rules: {
+        // Replay is ES6 only
+        '@sentry-internal/sdk/no-unsupported-es6-methods': 'off',
+      },
     },
     {
       files: ['jest.setup.ts', 'jest.config.ts'],

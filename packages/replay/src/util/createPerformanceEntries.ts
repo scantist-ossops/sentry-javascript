@@ -47,7 +47,8 @@ function createPerformanceEntry(entry: AllPerformanceEntry): ReplayPerformanceEn
   return ENTRY_TYPES[entry.entryType](entry);
 }
 
-function getAbsoluteTime(time: number): number {
+/** jsdoc */
+export function getAbsoluteTime(time: number): number {
   // browserPerformanceTimeOrigin can be undefined if `performance` or
   // `performance.now` doesn't exist, but this is already checked by this integration
   return ((browserPerformanceTimeOrigin || WINDOW.performance.timeOrigin) + time) / 1000;

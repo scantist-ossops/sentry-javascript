@@ -1,5 +1,5 @@
 import type { BaseClient } from '@sentry/core';
-import { addGlobalEventProcessor, getCurrentHub } from '@sentry/core';
+import { addEventProcessor, getCurrentHub } from '@sentry/core';
 import type { Client, DynamicSamplingContext } from '@sentry/types';
 import { addInstrumentationHandler } from '@sentry/utils';
 
@@ -30,7 +30,7 @@ export function addGlobalListeners(replay: ReplayContainer): void {
   if (client && client.addEventProcessor) {
     client.addEventProcessor(eventProcessor);
   } else {
-    addGlobalEventProcessor(eventProcessor);
+    addEventProcessor(eventProcessor);
   }
 
   // If a custom client has no hooks yet, we continue to use the "old" implementation

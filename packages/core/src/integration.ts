@@ -103,6 +103,7 @@ export function setupIntegration(client: Client, integration: Integration, integ
 
   // `setupOnce` is only called the first time
   if (installedIntegrations.indexOf(integration.name) === -1) {
+    // eslint-disable-next-line deprecation/deprecation
     integration.setupOnce(addGlobalEventProcessor, getCurrentHub);
     installedIntegrations.push(integration.name);
   }

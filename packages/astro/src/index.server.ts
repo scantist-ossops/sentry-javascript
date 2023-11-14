@@ -7,7 +7,9 @@ import { sentryAstro } from './integration';
 
 // Hence, we export everything from the Node SDK explicitly:
 export {
+  // eslint-disable-next-line deprecation/deprecation
   addGlobalEventProcessor,
+  addEventProcessor,
   addBreadcrumb,
   captureException,
   captureEvent,

@@ -9,7 +9,7 @@ import { addFeedbackBreadcrumb } from './util/addFeedbackBreadcrumb';
 import { shouldSampleForBufferEvent } from './util/shouldSampleForBufferEvent';
 
 /**
- * Returns a listener to be added to `addGlobalEventProcessor(listener)`.
+ * Returns a listener to be added to `addEventProcessor(listener)`.
  */
 export function handleGlobalEventListener(
   replay: ReplayContainer,

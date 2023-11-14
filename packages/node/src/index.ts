@@ -24,7 +24,9 @@ export type { TransactionNamingScheme } from './requestdata';
 export type { NodeOptions } from './types';
 
 export {
+  // eslint-disable-next-line deprecation/deprecation
   addGlobalEventProcessor,
+  addEventProcessor,
   addBreadcrumb,
   addIntegration,
   captureException,

@@ -2,7 +2,7 @@ import { record } from '@sentry-internal/rrweb';
 import type { serializedElementNodeWithId, serializedNodeWithId } from '@sentry-internal/rrweb-snapshot';
 import { NodeType } from '@sentry-internal/rrweb-snapshot';
 import type { Breadcrumb, HandlerDataDom } from '@sentry/types';
-import { htmlTreeAsString } from '@sentry/utils';
+import { htmlTreeAsString, getElementIdentifier } from '@sentry/utils';
 
 import type { ReplayContainer } from '../types';
 import { createBreadcrumb } from '../util/createBreadcrumb';
@@ -70,6 +70,7 @@ export function getBaseDomBreadcrumb(target: Node | null, message: string): Brea
               .map(text => (text as string).trim())
               .join(''),
             attributes: getAttributesToRecord(element.attributes),
+            componentName: getElementIdentifier(target),
           },
         }
       : {},

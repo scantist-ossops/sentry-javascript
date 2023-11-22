@@ -171,12 +171,13 @@ function _getXhrResponseBody(xhr: XMLHttpRequest): [string | undefined, NetworkM
  * Blob
  * Document
  * POJO
+ *
+ * Exported only for tests.
  */
 export function _parseXhrResponse(
   body: XMLHttpRequest['response'],
   responseType: XMLHttpRequest['responseType'],
 ): [string | undefined, NetworkMetaWarning?] {
-  logger.log(body, responseType, typeof body);
   try {
     if (typeof body === 'string') {
       return [body];
@@ -189,6 +190,10 @@ export function _parseXhrResponse(
     if (responseType === 'json' && body && typeof body === 'object') {
       return [JSON.stringify(body)];
     }
+
+    if (!body) {
+      return [undefined];
+    }
   } catch {
     __DEBUG_BUILD__ && logger.warn('[Replay] Failed to serialize body', body);
     return [undefined, 'BODY_PARSE_ERROR'];
@@ -196,7 +201,7 @@ export function _parseXhrResponse(
 
   __DEBUG_BUILD__ && logger.info('[Replay] Skipping network body because of body type', body);
 
-  return [undefined];
+  return [undefined, 'UNPARSEABLE_BODY_TYPE'];
 }
 
 function _getBodySize(
